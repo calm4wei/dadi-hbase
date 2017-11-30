@@ -4,6 +4,7 @@ import com.zqykj.dadi.common.Constants;
 import com.zqykj.dadi.entity.SnaFinal2;
 import com.zqykj.dadi.entity.SnaFinal3;
 import com.zqykj.dadi.entity.SnaFinalEntity;
+import com.zqykj.dadi.util.FormatUtils;
 import javafx.scene.control.Tab;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.hbase.Cell;
@@ -330,10 +331,10 @@ public class HBaseClient {
             entity.setREPORTORPHONENO(getValueInCell(cell));
             break;
         case LINKERMOBILE:
-            entity.setREPORTORPHONENO(getValueInCell(cell));
+            entity.setLINKERMOBILE(getValueInCell(cell));
             break;
         case DAMAGEAREANAME:
-            entity.setLINKERMOBILE(getValueInCell(cell));
+            entity.setDAMAGEAREANAME(getValueInCell(cell));
             break;
         case DAMAGEADDRESS:
             entity.setDAMAGEADDRESS(getValueInCell(cell));
@@ -426,6 +427,7 @@ public class HBaseClient {
             entity.setLOSSAPPROVALNAME_2(getValueInCell(cell));
             break;
         case SUMVERIFYFINAL_2:
+            // TODO 处理浮点数，保留小数点2位
             entity.setSUMVERIFYFINAL_2(getValueFloatInCell(cell));
             break;
         default:
@@ -586,7 +588,10 @@ public class HBaseClient {
 
     public Float getValueFloatInCell(Cell cell) {
         LOGGER.debug("cell Float value: {}", cell.getValueArray());
-        return cell == null ? -1 : Bytes.toFloat(cell.getValueArray());
+        Float f = cell == null ?
+                -1 :
+                Float.valueOf(Bytes.toString(cell.getValueArray(), cell.getValueOffset(), cell.getValueLength()));
+        return FormatUtils.getFloatByScale(f, 2);
     }
 
     public Integer getValueIntInCell(Cell cell) {
