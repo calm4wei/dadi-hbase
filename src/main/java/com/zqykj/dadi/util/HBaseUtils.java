@@ -22,13 +22,13 @@ public class HBaseUtils {
 
         // 这个hbase.keytab也是从远程服务器上copy下来的, 里面存储的是密码相关信息
         // 这样我们就不需要交互式输入密码了
-        conf.set("keytab.file", "/home/bigdata_query/bigdata_query.keytab");
+        conf.set(CONFIG.getProperty("keytab.file"), "/home/bigdata_query/bigdata_query.keytab");
         // 这个可以理解成用户名信息，也就是Principal hbase/1722.myip.domain@HADOOP.COM
-        conf.set("kerberos.principal", "bigdata_query@DDCX.COM");
+        conf.set(CONFIG.getProperty("kerberos.principal"), "bigdata_query@DDCX.COM");
         // hbase/_HOST@DDCX.COM
-        conf.set("hbase.master.kerberos.principal", "hbase/_HOST@DDCX.COM");
+        conf.set(CONFIG.getProperty("hbase.master.kerberos.principal"), "hbase/_HOST@DDCX.COM");
         // hbase/_HOST@DDCX.COM
-        conf.set("hbase.regionserver.kerberos.principal", "hbase/_HOST@DDCX.COM");
+        conf.set(CONFIG.getProperty("hbase.regionserver.kerberos.principal"), "hbase/_HOST@DDCX.COM");
         // kerberos
         conf.set("hbase.security.authentication", "kerberos");
         conf.set("hadoop.security.authentication", CONFIG.getProperty("hadoop.security.authentication", "kerberos"));
@@ -39,8 +39,7 @@ public class HBaseUtils {
 
     }
 
-
-    public static void close(Table table, ResultScanner resultScanner){
+    public static void close(Table table, ResultScanner resultScanner) {
 
     }
 
