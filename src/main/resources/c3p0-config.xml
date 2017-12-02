@@ -3,7 +3,7 @@
 
     <named-config name="local">
         <property name="driverClass">com.mysql.jdbc.Driver</property>
-        <property name="jdbcUrl">jdbc:mysql://192.168.43.118:3306/zqyccserver?useSSL=false</property>
+        <property name="jdbcUrl">jdbc:mysql://172.30.6.175:3306/zqyccserver?useSSL=false</property>
         <property name="user">root</property>
         <property name="password">123456</property>
         <property name="initialPoolSize">2</property>

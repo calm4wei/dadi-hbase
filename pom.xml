@@ -16,8 +16,8 @@
         <zookeeper.version>3.4.6</zookeeper.version>
         <protobuf.version>2.5.0</protobuf.version>
         <commons-logging.version>1.2</commons-logging.version>
-        <java.source.version>1.8</java.source.version>
-        <java.target.version>1.8</java.target.version>
+        <java.source.version>1.7</java.source.version>
+        <java.target.version>1.7</java.target.version>
         <skip.test>true</skip.test>
     </properties>
 

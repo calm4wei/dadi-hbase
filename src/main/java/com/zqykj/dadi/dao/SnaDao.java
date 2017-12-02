@@ -47,9 +47,9 @@ public class SnaDao {
 
     }
 
-    public void multiGetAndInsert(HBaseClient hBaseClient, List<byte[]> list) throws IOException {
-        int total = list.size();
-        int batchCount = total / THREAD_BATCH;
+    public void multiGetAndInsert(final HBaseClient hBaseClient, final List<byte[]> list) throws IOException {
+        final int total = list.size();
+        final int batchCount = total / THREAD_BATCH;
         if (batchCount == 0) {
             insertBatch(hBaseClient.getEntities(list));
             return;
@@ -78,9 +78,9 @@ public class SnaDao {
         }
     }
 
-    public void multiInsert(List<SnaFinalEntity> list) {
-        int total = list.size();
-        int batchCount = total / THREAD_BATCH;
+    public void multiInsert(final List<SnaFinalEntity> list) {
+        final int total = list.size();
+        final int batchCount = total / THREAD_BATCH;
         if (batchCount == 0) {
             insertBatch(list);
             return;

@@ -88,9 +88,9 @@ public class SnaFinal3Dao {
         }
     }
 
-    public void multiInsert(List<SnaFinal3> list) {
-        int total = list.size();
-        int batchCount = total / THREAD_BATCH;
+    public void multiInsert(final List<SnaFinal3> list) {
+        final int total = list.size();
+        final int batchCount = total / THREAD_BATCH;
         if (batchCount == 0) {
             insertBatch(list);
             return;
